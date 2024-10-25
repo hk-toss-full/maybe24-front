@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {
+  createBrowserRouter,
+  RouteObject,
+  RouterProvider,
+} from "react-router-dom";
+import LandingPage from "./pages/Landing.tsx";
+import "../global.css";
+import GlobalLayout from "./layout/global.tsx";
 
-function App() {
-  const [count, setCount] = useState(0)
+// tanstack query
+const queryClient = new QueryClient();
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+// apollo for graphQL
+const client = new ApolloClient({
+  uri: "/", // graphql server url
+  cache: new InMemoryCache(),
+});
 
-export default App
+// router
+const routes: RouteObject[] = [
+  { path: "/", element: <LandingPage /> },
+  // 하위에 루트 추가
+];
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <GlobalLayout />,
+    children: routes,
+  },
+]);
+
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <ApolloProvider client={client}>
+        <RouterProvider router={router}></RouterProvider>
+      </ApolloProvider>
+    </QueryClientProvider>
+  </StrictMode>
+);
