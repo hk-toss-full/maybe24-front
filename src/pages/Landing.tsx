@@ -3,7 +3,7 @@ import LTest from "../components/landing/test";
 
 const LandingPage = () => {
   return (
-    <div className="bg-black">
+    <div>
       <CTest />
       This is Landing Page
       <LTest />
