@@ -1,5 +1,5 @@
 import CTest from "../components/common/test";
-import LTest from "../components/landing/test";
+import LTest from "../components/landing/Test";
 
 const LandingPage = () => {
   return (

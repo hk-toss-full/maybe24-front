@@ -10,6 +10,7 @@ import {
 import LandingPage from "./pages/Landing.tsx";
 import "../global.css";
 import GlobalLayout from "./layout/global.tsx";
+import DetailsPage from "./pages/details/index.tsx";
 
 // tanstack query
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const client = new ApolloClient({
 // router
 const routes: RouteObject[] = [
   { path: "/", element: <LandingPage /> },
+  { path: "/details", element: <DetailsPage/>}
   // 하위에 루트 추가
 ];
 
