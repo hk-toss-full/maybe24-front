@@ -9,11 +9,8 @@ import {
 } from "react-router-dom";
 import LandingPage from "./pages/Landing.tsx";
 import GlobalLayout from "./layout/global.tsx";
-<<<<<<< HEAD
 import DetailsPage from "./pages/details/index.tsx";
-=======
 import "../tailwind.css";
->>>>>>> main
 
 // tanstack query
 const queryClient = new QueryClient();

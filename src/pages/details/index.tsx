@@ -1,22 +1,12 @@
-import Details from "../../components/details/Details"
-import AverageRating from "../../components/details/AverageRating";
-import ReservationButton from "../../components/details/ReservationButton";
+import Details from "../../components/details/Details";
+
 
 const DetailsPage = () => {
-  const productId = 123;
 
   return (
-    <div>
       <div>
         <Details/>
       </div>
-      <div>
-        <AverageRating productId={productId} />
-      </div>
-      <div>
-        <ReservationButton />
-      </div>
-    </div>
   )
 }
 

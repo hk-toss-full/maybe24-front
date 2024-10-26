@@ -27,7 +27,12 @@ const AverageRating = ({ productId }: AverageRatingProps) => {
   ,[productId]);
 
   return(
-    <p>별점 평균 : {averageRating !== null ? averageRating.toFixed(3) : 0}</p>
+    <dl className="flex align-items justify-content pt-[50px]">
+      <dt className="mr-[10px] mb-[45px]">별점</dt> 
+      <dd>
+        {averageRating !== null ? averageRating.toFixed(3) : 0}
+      </dd>
+    </dl>
   )
 }
 
