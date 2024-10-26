@@ -21,8 +21,8 @@ const Details = () => {
   return (
     <div>
       <div className="max-w-[1300px] m-[20px]">
-        <h1 className="text-sm">상품명</h1> 
-          <p className="text-sm">공연 장소</p>
+        <h1>상품명</h1> 
+          <p className="text-lg">공연 장소</p>
           <hr/>
       </div>
       <div className="flex">

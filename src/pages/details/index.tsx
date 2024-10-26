@@ -3,13 +3,15 @@ import AverageRating from "../../components/details/AverageRating";
 import ReservationButton from "../../components/details/ReservationButton";
 
 const DetailsPage = () => {
+  const productId = 123;
+
   return (
     <div>
       <div>
         <Details/>
       </div>
       <div>
-        <AverageRating productId={Details} />
+        <AverageRating productId={productId} />
       </div>
       <div>
         <ReservationButton />
