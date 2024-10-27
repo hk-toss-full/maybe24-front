@@ -1,6 +1,5 @@
-import { useCallback, useRef } from "react";
-import dataImage from "../../assets/banner.json";
-import dotsImage from "../../assets/bannerDots.json";
+import dataImage from "../../data/banner.json";
+import dotsImage from "../../data/bannerDots.json";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 
