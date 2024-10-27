@@ -1,12 +1,9 @@
-import CTest from "../components/common/test";
-import LTest from "../components/landing/test";
+import Banner from "../components/landing/Banner";
 
 const LandingPage = () => {
   return (
     <div>
-      <CTest />
-      This is Landing Page
-      <LTest />
+      <Banner />
     </div>
   );
 };
