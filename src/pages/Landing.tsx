@@ -1,16 +1,15 @@
-import Banner from "../components/landing/Banner";
+import MiddleBanner from "../components/landing/MiddleBanner";
+import Banner from "../components/landing/TopBanner";
 import WhatsHot from "../components/landing/WhatsHot";
 
 const LandingPage = () => {
   return (
     <div>
       <Banner />
-      {/** WHAT'S HOT */}
       <WhatsHot />
       {/** TICKET OPEN */}
       <></>
-      {/** SIDE BANNER */}
-      <></>
+      <MiddleBanner />
       {/** RANKING */}
       <></>
       {/** etc */}

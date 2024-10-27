@@ -1,5 +1,5 @@
-import dataImage from "../../data/banner.json";
-import dotsImage from "../../data/bannerDots.json";
+import dataImage from "../../data/top_banner.json";
+import dotsImage from "../../data/top_banner_dots.json";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 
