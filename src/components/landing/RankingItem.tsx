@@ -21,7 +21,7 @@ const RankingItem = (props: RankingItemProps) => {
           <img
             src={thumbnail}
             alt={`${category}의 랭킹 ${order}위 썸네일 배경`}
-            className="h-80 w-full blur-sm object-cover group-hover:scale-110 transition-all duration-300"
+            className="h-80 w-full blur-sm object-cover group-hover:scale-110 transition-all duration-300 ease-in"
           />
         </div>
         <img

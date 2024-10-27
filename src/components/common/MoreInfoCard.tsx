@@ -39,7 +39,7 @@ const MoreInfoCard = (props: Product) => {
         </div>
         <img
           src={thumbnail}
-          className="w-full peer-hover:scale-105 transition-all duration-200"
+          className="w-full peer-hover:scale-105 transition-all duration-200 ease-in"
         />
       </div>
 
