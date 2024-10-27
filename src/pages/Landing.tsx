@@ -1,4 +1,5 @@
 import MiddleBanner from "../components/landing/MiddleBanner";
+import Ranking from "../components/landing/Ranking";
 import Banner from "../components/landing/TopBanner";
 import WhatsHot from "../components/landing/WhatsHot";
 
@@ -10,7 +11,7 @@ const LandingPage = () => {
       {/** TICKET OPEN */}
       <></>
       <MiddleBanner />
-      {/** RANKING */}
+      <Ranking />
       <></>
       {/** etc */}
       <></>

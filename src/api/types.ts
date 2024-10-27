@@ -1,3 +1,10 @@
+export type Category =
+  | "musical"
+  | "concert"
+  | "play"
+  | "classic"
+  | "exhibition";
+
 interface Round {
   roundId: string;
   totalCount: string;

@@ -5,7 +5,7 @@ const WhatsHot = () => {
   return (
     <div className="section">
       <h1 className="section-header">WHAT'S HOT</h1>
-      <div className="flex gap-5 flex-wrap justify-center">
+      <div className="flex gap-5 flex-wrap justify-center mt-12">
         {dataList.map((data, index) => (
           <MoreInfoCard key={index} {...data} />
         ))}
