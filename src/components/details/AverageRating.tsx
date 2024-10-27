@@ -9,22 +9,32 @@ interface AverageRatingProps {
   productId: number;
 }
 
-const AverageRating = ({ productId }: AverageRatingProps) => {
-  const [averageRating, setAverageRating] = useState<number | null>(null);
+const getAverageRating = async(productId:number) => {
+  const {data} = await axios({
+    method: "GET",
+    url: `http://localhost:9000/${productId}/reviews/average-rating`
+  })
+  return data;
+}
 
-  const getAverageRating = async (productId: number) => {
-    try {
-      const response = await axios.get<AverageRating>(`http://localhost:9000/reviews/${productId}/average-rating`);
-      setAverageRating(response.data.average);
-    } catch (error) {
-      console.error('Error fetching rating average:', error);
-      setAverageRating(null);
-    }
-  };
+const AverageRating: React.FC<AverageRatingProps> = ({productId}) => {
+  const [averageRating, setAverageRating] = useState<number | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    getAverageRating(productId)}
-  ,[productId]);
+    const loadRating = async () => {
+      try{
+        const ratingData = await getAverageRating(productId);
+        setAverageRating(ratingData);
+      }catch (err) {
+        setError('정보를 불러오는 데 오류가 발생했습니다.');
+    } finally {
+        setLoading(false);
+    }
+};
+  loadRating();
+}, [productId]);
 
   return(
     <dl className="flex align-items justify-content pt-[50px]">

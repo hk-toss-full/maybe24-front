@@ -11,6 +11,7 @@ import LandingPage from "./pages/Landing.tsx";
 import GlobalLayout from "./layout/global.tsx";
 import DetailsPage from "./pages/details/index.tsx";
 import "../tailwind.css";
+import ReviewsPage from "./pages/reviews/index.tsx";
 
 // tanstack query
 const queryClient = new QueryClient();
@@ -24,7 +25,8 @@ const client = new ApolloClient({
 // router
 const routes: RouteObject[] = [
   { path: "/", element: <LandingPage /> },
-  { path: "/details", element: <DetailsPage/>}
+  { path: "/details", element: <DetailsPage/>},
+  { path: "/:productId/reviews", element: <ReviewsPage/>},
   // 하위에 루트 추가
 ];
 
