@@ -1,0 +1,200 @@
+[
+  {
+    "title": "뮤지컬 쿠로이 저택엔 누가 살고 있을까?",
+    "location": "플러스씨어터",
+    "thumbnail": "http://tkfile.yes24.com/upload2/perfblog/202409/20240923/20240923-51103.jpg/dims/quality/70/",
+    "discount": {
+      "type": "프리뷰 할인",
+      "rate": 35
+    },
+    "roundList": [
+      {
+        "date": "2024-10-29",
+        "price": 25000
+      },
+      {
+        "date": "2024-10-30",
+        "price": 25000
+      },
+      {
+        "date": "2024-10-31",
+        "price": 25000
+      },
+      {
+        "date": "2024-11-01",
+        "price": 25000
+      },
+      {
+        "date": "2024-11-02",
+        "price": 25000
+      },
+      {
+        "date": "2024-11-03",
+        "price": 25000
+      },
+      {
+        "date": "2024-11-04",
+        "price": 25000
+      },
+      {
+        "date": "2024-11-05",
+        "price": 25000
+      }
+    ]
+  },
+  {
+    "title": "뮤지컬 빈센트 반 고흐",
+    "location": "인터파크 서경스퀘어 스콘1관",
+    "thumbnail": "http://tkfile.yes24.com/upload2/perfblog/202410/20241014/20241014-50536.jpg/dims/quality/70/",
+    "discount": {
+      "type": "예스24 특별 할인",
+      "rate": 35
+    },
+    "roundList": [
+      {
+        "date": "2024-09-07",
+        "price": 18000
+      },
+      {
+        "date": "2024-09-08",
+        "price": 18000
+      },
+      {
+        "date": "2024-09-09",
+        "price": 18000
+      }
+    ]
+  },
+  {
+    "title": "HYPE UP FESTIVAL",
+    "location": "YES24 LIVE HALL",
+    "thumbnail": "http://tkfile.yes24.com/upload2/perfblog/202409/20240906/20240906-50930.jpg/dims/quality/70/",
+    "discount": {
+      "type": "청소년 할인",
+      "rate": 40
+    },
+    "roundList": [
+      {
+        "date": "2024-11-10",
+        "price": 25000
+      }
+    ]
+  },
+  {
+    "title": "뮤지컬 랭보",
+    "location": "예스24스테이지 1관",
+    "thumbnail": "http://tkfile.yes24.com/upload2/perfblog/202410/20241021/20241021-50568.jpg/dims/quality/70/",
+    "discount": {
+      "type": "청소년 할인",
+      "rate": 30
+    },
+    "roundList": [
+      {
+        "date": "2024-09-17",
+        "price": 42000
+      },
+      {
+        "date": "2024-09-18",
+        "price": 42000
+      },
+      {
+        "date": "2024-09-19",
+        "price": 42000
+      },
+      {
+        "date": "2024-09-20",
+        "price": 42000
+      },
+      {
+        "date": "2024-09-21",
+        "price": 42000
+      }
+    ]
+  },
+  {
+    "title": "연극 킬롤로지",
+    "location": "대학로 TOM 2관",
+    "thumbnail": "http://tkfile.yes24.com/upload2/perfblog/202409/20240924/20240924-50570.jpg/dims/quality/70/",
+    "discount": {
+      "type": "커뮤니티 할인",
+      "rate": 30
+    },
+    "roundList": [
+      {
+        "date": "2024-09-27",
+        "price": 50000
+      },
+      {
+        "date": "2024-09-28",
+        "price": 50000
+      },
+      {
+        "date": "2024-09-29",
+        "price": 50000
+      }
+    ]
+  },
+
+  {
+    "title": "연극 '고도를 기다리며'를 기다리며",
+    "location": "예스24스테이지 3관",
+    "thumbnail": "http://tkfile.yes24.com/upload2/perfblog/202407/20240731/20240731-50388_2.jpg/dims/quality/70/",
+    "discount": {
+      "type": "고도 할인",
+      "rate": 25
+    },
+    "roundList": [
+      {
+        "date": "2024-09-07",
+        "price": 20000
+      },
+      {
+        "date": "2024-09-08",
+        "price": 20000
+      },
+      {
+        "date": "2024-09-09",
+        "price": 20000
+      },
+      {
+        "date": "2024-09-10",
+        "price": 20000
+      },
+      {
+        "date": "2024-09-11",
+        "price": 20000
+      }
+    ]
+  },
+  {
+    "title": "연극 톡톡",
+    "location": "대학로 TOM 2관",
+    "thumbnail": "http://tkfile.yes24.com/upload2/perfblog/202410/20241016/20241016-51288.jpg/dims/quality/70/",
+    "discount": {
+      "type": "프리뷰 할인",
+      "rate": 40
+    },
+    "roundList": [
+      {
+        "date": "2024-09-07",
+        "price": 50000
+      },
+      {
+        "date": "2024-09-08",
+        "price": 50000
+      },
+      {
+        "date": "2024-09-09",
+        "price": 50000
+      },
+      {
+        "date": "2024-09-10",
+        "price": 50000
+      },
+      {
+        "date": "2024-09-11",
+        "price": 50000
+      }
+    ]
+  }
+]

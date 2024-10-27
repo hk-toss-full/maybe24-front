@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .section {
+    text-align: center;
+    padding: 80px 192px;
+  }
+  .section-header {
+    margin-bottom: 40px;
+    color: #444;
+    font-size: 36px;
+    font-weight: 700;
+  }
+}
