@@ -30,7 +30,7 @@ const routes: RouteObject[] = [
 ];
 
 const authRoutes: RouteObject[] = [
-  { path: "", element: <LoginPage /> },
+  { path: "login", element: <LoginPage /> },
   { path: "register", element: <RegisterPage /> },
 ];
 

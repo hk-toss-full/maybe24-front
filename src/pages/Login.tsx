@@ -1,25 +1,57 @@
-import { FormEventHandler } from "react";
+import { ChangeEvent, FormEventHandler, useState } from "react";
 import AuthInput from "../components/common/AuthInput";
+import { LoginRequest } from "../api/authApi";
+import { useLogin } from "../components/hooks/api/useLogin";
 
 const LoginPage = () => {
-  const onSubmit: FormEventHandler<HTMLFormElement> = (e) => {
+  const [error, setError] = useState<string | null>(null);
+  const [formState, setFormState] = useState<LoginRequest>({
+    userId: "",
+    password: "",
+  });
+  const { data: loginRes, mutateAsync: login } = useLogin();
+
+  const onChangeInput = ({ target }: ChangeEvent<HTMLInputElement>) =>
+    setFormState((formState) => ({
+      ...formState,
+      [target.name]: target.value,
+    }));
+
+  const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    // TODO: 로그인 API호출
+    const response = await login(formState);
+    if (response?.code !== 200) {
+      setError(response?.message);
+    }
   };
 
   return (
     <div className="flex p-[60px] gap-10 justify-center">
-      <div className="flex-1 flex items-center">
-        <form action="/" onSubmit={onSubmit} className="space-y-2 ">
-          <AuthInput name="id" placeholder="아이디" />
-          <AuthInput name="password" placeholder="비밀번호" />
-          <button
-            type="submit"
-            className="rounded-sm py-4 text-[20px] font-semibold bg-[#1869B3] text-white w-full"
-          >
-            로그인
-          </button>
-        </form>
+      <div className="flex-1 flex items-center ">
+        <div className="relative">
+          <span className="absoltue text-red-600 text-[12px] absolute -top-5">
+            {error}
+          </span>
+          <form action="/" onSubmit={onSubmit} className="space-y-2 ">
+            <AuthInput
+              name="userId"
+              placeholder="아이디"
+              onChange={onChangeInput}
+            />
+            <AuthInput
+              name="password"
+              type="password"
+              placeholder="비밀번호"
+              onChange={onChangeInput}
+            />
+            <button
+              type="submit"
+              className="rounded-sm py-4 text-[20px] font-semibold bg-[#1869B3] text-white w-full"
+            >
+              로그인
+            </button>
+          </form>
+        </div>
       </div>
       <div className="flex-1 space-y-2">
         <img
