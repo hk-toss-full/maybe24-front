@@ -1,15 +1,8 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-
 import AverageRating from "./AverageRating";
 import ReservationButton from "./ReservationButton";
 import { useParams } from "react-router-dom";
 
-// 상품아이디로 상품명, 공연장소, 이미지
-// 할인정보
-// 회차아이디로 가격
-// 리뷰entity에서 별점평균  
-// 예매하기 -> 예약page로 새창열기
 
 interface Product{
   productId: number;
@@ -18,13 +11,13 @@ interface Product{
   thumbNail: string;
 }
 
-const getProduct = async(productId:number) => {
-  const {data} = await axios({
-    method: "GET",
-    url: `http://localhost:9000/${productId}`
-  })
-  return data;
-}
+// const getProduct = async(productId:number) => {
+//   const {data} = await axios({
+//     method: "GET",
+//     url: `http://localhost:9000/${productId}`
+//   })
+//   return data;
+// }
 
 
 const Details = () => {
