@@ -4,14 +4,12 @@ import { useParams } from "react-router-dom";
 const ReviewsPage: React.FC = () => {
   const { productId } = useParams<{productId: string}>();
 
-  console.log("Received productId:", productId);
 
-
-  const parseProductId = productId? parseInt(productId, 10): undefined;
+  // const parseProductId = parseInt(productId!);
 
   return (
       <div>
-        <ReviewList productId={parseProductId} />
+        <ReviewList productId={Number(productId)} />
       </div>
   )
 }

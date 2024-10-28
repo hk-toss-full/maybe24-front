@@ -25,8 +25,8 @@ const client = new ApolloClient({
 // router
 const routes: RouteObject[] = [
   { path: "/", element: <LandingPage /> },
-  { path: "/details", element: <DetailsPage/>},
-  { path: "/:productId/reviews", element: <ReviewsPage/>},
+  { path: "/details/:productId", element: <DetailsPage/>},
+  { path: "/reviews/:productId", element: <ReviewsPage/>},
   // 하위에 루트 추가
 ];
 

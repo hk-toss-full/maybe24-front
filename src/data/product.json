@@ -1,0 +1,12 @@
+[
+  {
+    "productId": 1,
+    "title": "뮤지컬 쿠로이 저택엔 누가 살고 있을까?",
+    "location": "플러스씨어터",
+    "thumbnail": "http://tkfile.yes24.com/upload2/perfblog/202409/20240923/20240923-51103.jpg/dims/quality/70/",
+    "discount": {
+      "type": "프리뷰 할인",
+      "rate": 35
+    }
+  }
+  ]

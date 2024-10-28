@@ -1,16 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import FormattingDate from "./FormattingDate";
-import ReviewFormModal from "./ReviewFormModal";
-
-
-const getReviewList = async(productId: number) => {
-  const {data} = await axios({
-    method: "GET",
-    url: `http://localhost:9000/${productId}/reviews`
-  });
-  return data;
-} 
+import Add from "./add";
+import { useNavigate } from "react-router-dom";
 
 
 interface Review{
@@ -22,15 +14,38 @@ interface Review{
   productId?: number;
 }
 
-interface ReviewListProps {
-  productId?: number;
-}
 
-const ReviewList: React.FC<ReviewListProps> = ({productId}) => {
+const getReviewList = async(productId: number) => {
+  const {data} = await axios({
+    method: "GET",
+    url: `http://localhost:9000/${productId}/reviews`
+  });
+  return data;
+} 
+
+const deleteReview = async(reviewId: number) => {
+  const {data} = await axios({
+    method: "DELETE",
+    url: `http://localhost:9000/reviews/${reviewId}`
+  });
+  return data;
+} 
+
+const updateReview = async({reviewId, productId, author, content, rating}) => {
+  const {data} = await axios({
+    method: "PUT",
+    url: `http://localhost:9000/reviews/${reviewId}`,
+    data: {reviewId, productId, author, content, rating}
+  });
+  return data;
+} 
+
+const ReviewList: React.FC<Review> = ({productId}) => {
+  const navigate = useNavigate();
   const [reviews, setReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [postReview, setPostReview] = useState({ author: "", content: "", rating: 0 });
 
     useEffect(() => {
       if (productId) {
@@ -49,35 +64,48 @@ const ReviewList: React.FC<ReviewListProps> = ({productId}) => {
     }, [productId]);
 
 
-const openModal = () => {
-  console.log("모달 열기 버튼 클릭");
-  setIsModalOpen(true);
-};
-const closeModal = () => setIsModalOpen(false);
+    const updateReviewList = async()=>{
+      const data = await getReviewList(productId!)
+      setReviews(data);
+    }
+
+    const updatePost = async (reviewId: number) => {
+      const data = await updateReview({reviewId, productId, 
+        author: postReview.author , content: postReview.content, rating: postReview.rating});
+      setPostReview(data);
+    }
+
+    const deletePost = async (reviewId: number) => {
+      await deleteReview(reviewId);
+      navigate(`/reviews/${productId}`);
+      updateReviewList();
+    };
 
   return(
     <div className="mt-[70px] mr-[100px] ml-[100px]">
       <div className="flex flex-row space-x-[1050px]">
-      <h1 className="text-[25px] font-bold mb-[5px]">관람후기</h1>
-      <button onClick={openModal} className="border-solid border-black border-[1px] w-[150px] h-[30px]">관람 후기 등록</button>
-      <ReviewFormModal isOpen={isModalOpen} onClose={closeModal}/>
+        <h1 className="text-[25px] font-bold mb-[5px]">관람후기</h1>
       </div>
       <hr className="border-black border-[1px]"/>
+      <Add productId={productId} updateReviewList={updateReviewList}/>
       <ul>
         {reviews.map((review) => (
-        <li key={review.reviewId} className="border-b-[1px] border-gray-300 mt-[10px] pb-[10px] font-light">
-          <span className="mb-[10px]">
-            {review.author} <FormattingDate createdAt={review.createdAt}/> </span>
+        <li key={review.reviewId} className="border-b-[1px] border-gray-300 mt-[10px] pb-[10px]">
+          <div className="flex flex-row gap-5">
+            {review.author} <FormattingDate createdAt={review.createdAt} />
+            <button onClick={() => deletePost(review.reviewId)} className="border-black border-2 w-[60px]">delete</button>
+            <button onClick={() => updatePost(review.reviewId)}  className="border-black border-2 w-[60px]">update</button>
+          </div>
             <span>
               {'★'.repeat(review.rating)}{'☆'.
             repeat(5- review.rating)}
           </span>
+          <br/>
           <span>
           {review.content}
           </span>
         </li>
         ))}
-        
       </ul>
     </div>
   );
