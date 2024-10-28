@@ -5,7 +5,7 @@ import Ranking from "../components/landing/Ranking";
 import Banner from "../components/landing/TopBanner";
 import WhatsHot from "../components/landing/WhatsHot";
 import musicalData from "../data/category_musical.json";
-import LandingLayout from "../layout/landing_layout";
+import LandingLayout from "../layout/landing";
 
 const LandingPage = () => {
   return (

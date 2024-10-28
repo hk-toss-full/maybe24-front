@@ -10,6 +10,8 @@ import {
 import LandingPage from "./pages/Landing.tsx";
 import GlobalLayout from "./layout/global.tsx";
 import "../tailwind.css";
+import LoginPage from "./pages/Login.tsx";
+import AuthLayout from "./layout/auth.tsx";
 
 // tanstack query
 const queryClient = new QueryClient();
@@ -26,11 +28,18 @@ const routes: RouteObject[] = [
   // 하위에 루트 추가
 ];
 
+const authRoutes: RouteObject[] = [{ path: "", element: <LoginPage /> }];
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <GlobalLayout />,
     children: routes,
+  },
+  {
+    path: "/auth",
+    element: <AuthLayout />,
+    children: authRoutes,
   },
 ]);
 
