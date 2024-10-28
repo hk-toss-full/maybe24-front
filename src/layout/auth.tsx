@@ -14,13 +14,10 @@ const AuthLayout = () => {
             {isLoginPage ? "로그인" : "회원가입"}
           </div>
           <Link
-            to="/signup"
-            className={clsx(
-              !isLoginPage && "",
-              "px-5 py-2 bg-white font-semibold border border-gray-300 shadow-sm text-[13px] rounded-sm"
-            )}
+            to={isLoginPage ? "/auth/register" : "/auth"}
+            className="px-5 py-2 bg-white font-semibold border border-gray-300 shadow-sm text-[13px] rounded-sm"
           >
-            회원가입
+            {isLoginPage ? "회원가입" : "로그인"}
           </Link>
         </header>
         <div className=" bg-white h-full border border-gray-300">
