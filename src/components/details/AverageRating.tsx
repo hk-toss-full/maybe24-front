@@ -12,7 +12,7 @@ interface AverageRatingProps {
 const getAverageRating = async(productId:number) => {
   const {data} = await axios({
     method: "GET",
-    url: `http://localhost:9000/${productId}/reviews/average-rating`
+    url: `http://localhost:9000/reviews/average-rating/${productId}`
   })
   return data;
 }
@@ -38,9 +38,9 @@ const AverageRating: React.FC<AverageRatingProps> = ({productId}) => {
 
   return(
     <dl className="flex align-items justify-content pt-[50px]">
-      <dt className="mr-[10px] mb-[45px]">별점</dt> 
+      <dt className="mr-[10px] mb-[45px] font-semibold">별점</dt> 
       <dd>
-        {averageRating !== null ? averageRating.toFixed(3) : 0}
+        {averageRating !== null ? averageRating.toFixed(2) : 0}
       </dd>
     </dl>
   )

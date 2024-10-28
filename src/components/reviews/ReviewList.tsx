@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import FormattingDate from "./FormattingDate";
-import Add from "./add";
+import Add from "./Add";
 import { useNavigate } from "react-router-dom";
-
+import { getReviewList, deleteReview, updateReview, addReview } from "../api/ReviewApi"
 
 interface Review{
   reviewId: number;
@@ -14,38 +13,13 @@ interface Review{
   productId?: number;
 }
 
-
-const getReviewList = async(productId: number) => {
-  const {data} = await axios({
-    method: "GET",
-    url: `http://localhost:9000/${productId}/reviews`
-  });
-  return data;
-} 
-
-const deleteReview = async(reviewId: number) => {
-  const {data} = await axios({
-    method: "DELETE",
-    url: `http://localhost:9000/reviews/${reviewId}`
-  });
-  return data;
-} 
-
-const updateReview = async({reviewId, productId, author, content, rating}) => {
-  const {data} = await axios({
-    method: "PUT",
-    url: `http://localhost:9000/reviews/${reviewId}`,
-    data: {reviewId, productId, author, content, rating}
-  });
-  return data;
-} 
-
 const ReviewList: React.FC<Review> = ({productId}) => {
   const navigate = useNavigate();
   const [reviews, setReviews] = useState<Review[]>([]);
+  const [board, setBoard] = useState({author: "",content: "", rating: 0 });
+
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [postReview, setPostReview] = useState({ author: "", content: "", rating: 0 });
 
     useEffect(() => {
       if (productId) {
@@ -69,10 +43,18 @@ const ReviewList: React.FC<Review> = ({productId}) => {
       setReviews(data);
     }
 
+    
+  const addPost = async () => {
+    const data = await addReview({productId, ...board});
+    setBoard({ author: "" ,content: "", rating: 0 });
+    await updateReviewList();
+  };
+
     const updatePost = async (reviewId: number) => {
-      const data = await updateReview({reviewId, productId, 
-        author: postReview.author , content: postReview.content, rating: postReview.rating});
-      setPostReview(data);
+      await updateReview({reviewId, productId, 
+        author: board.author , content: board.content, rating: board.rating});
+      setBoard({ author: "", content: "", rating: 0 });
+      updateReviewList();
     }
 
     const deletePost = async (reviewId: number) => {
@@ -81,20 +63,24 @@ const ReviewList: React.FC<Review> = ({productId}) => {
       updateReviewList();
     };
 
+    const openPost = (review: Review) => {
+      setBoard({...review})
+    }
+
   return(
     <div className="mt-[70px] mr-[100px] ml-[100px]">
       <div className="flex flex-row space-x-[1050px]">
         <h1 className="text-[25px] font-bold mb-[5px]">관람후기</h1>
       </div>
       <hr className="border-black border-[1px]"/>
-      <Add productId={productId} updateReviewList={updateReviewList}/>
+      <Add board={board} setBoard={setBoard} addPost={addPost} updatePost={updatePost}/>
       <ul>
         {reviews.map((review) => (
         <li key={review.reviewId} className="border-b-[1px] border-gray-300 mt-[10px] pb-[10px]">
           <div className="flex flex-row gap-5">
             {review.author} <FormattingDate createdAt={review.createdAt} />
             <button onClick={() => deletePost(review.reviewId)} className="border-black border-2 w-[60px]">delete</button>
-            <button onClick={() => updatePost(review.reviewId)}  className="border-black border-2 w-[60px]">update</button>
+            <button onClick={() => openPost(review)}  className="border-black border-2 w-[60px]">update</button>
           </div>
             <span>
               {'★'.repeat(review.rating)}{'☆'.

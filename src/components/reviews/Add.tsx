@@ -1,50 +1,21 @@
 import { useState } from "react";
-import axios from "axios";
 import productData from "../../data/product.json"
+import {getReviewList, addReview, updateReview } from "../api/ReviewApi"
 
 interface productData{
   productId: number;
-  updateReviewList: ()=>void;
+  board: any;
+  setBoard: (board:any)=>void;
+  addPost: ()=>void;
+  updatePost: (reviewId:number)=>void;
 }
 
-const getReviewsByProductId = async(productId: number) => {
-  const {data} = await axios({
-    method: "GET",
-    url: `http://localhost:9000/${productId}/reviews`
-  });
-  return data;
-} 
+const Add = ({ board, setBoard, addPost, updatePost }:productData) => {
 
-const addReview = async( {productId ,author, content, rating}) => {
-  const {data} = await axios({
-    method: "POST",
-    url: `http://localhost:9000/${productId}/reviews`,
-    data: {productId, author, content, rating}
-  });
-  return data;
-} 
-
-const updateReview = async({reviewId, productId, author, content, rating}) => {
-  const {data} = await axios({
-    method: "PUT",
-    url: `http://localhost:9000/reviews/${reviewId}`,
-    data: { productId, author, content, rating}
-  });
-  return data;
-} 
-
-const Add = ({ productId, updateReviewList }:productData) => {
-  const [board, setBoard] = useState({author: "",content: "", rating: 0 });
 
   const handleInput = (e) => {
     const { name, value } = e.target;
     setBoard({ ...board, [name]: value });
-  };
-
-  const addPost = async () => {
-    const data = await addReview({productId, author: board.author, content: board.content, rating: board.rating});
-    setBoard({ author: "" ,content: "", rating: 0 });
-    updateReviewList();
   };
 
 
@@ -84,6 +55,7 @@ const Add = ({ productId, updateReviewList }:productData) => {
           >
             ADD
           </button>
+          <button onClick={()=>updatePost(board.reviewId)}>UPDATE</button>
         </div>
       </div>
       <div className="mt-[30px]">
