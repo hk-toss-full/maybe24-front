@@ -26,11 +26,6 @@ const LandingPage = () => {
           dataList={musicalData}
         />
         <Category
-          title="MUSICAL & PLAY"
-          themeColor="#E82F75"
-          dataList={musicalData}
-        />
-        <Category
           title="CONCERT & CLASSIC"
           themeColor="#8340EA"
           dataList={musicalData}
