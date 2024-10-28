@@ -9,7 +9,7 @@ const AuthLayout = () => {
     <div className="bg-[#f8f8f8] w-full h-screen">
       <div className="max-w-[958px] min-w-[958px] mx-auto">
         <header className="flex justify-between relative h-[100px] items-center">
-          <div>로고</div>
+          <Link to="/">로고</Link>
           <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 text-[24px] font-bold">
             {isLoginPage ? "로그인" : "회원가입"}
           </div>
