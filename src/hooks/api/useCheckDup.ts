@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import AuthApi from "../../../api/authApi";
+import AuthApi from "../../api/authApi";
 
 export const useCheckDup = () => {
   return useMutation({

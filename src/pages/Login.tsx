@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEventHandler, useState } from "react";
 import AuthInput from "../components/common/AuthInput";
 import { LoginRequest } from "../api/authApi";
-import { useLogin } from "../components/hooks/api/useLogin";
+import { useLogin } from "../hooks/api/useLogin";
 
 const LoginPage = () => {
   const [error, setError] = useState<string | null>(null);
@@ -9,7 +9,7 @@ const LoginPage = () => {
     userId: "",
     password: "",
   });
-  const { data: loginRes, mutateAsync: login } = useLogin();
+  const { mutateAsync: login } = useLogin();
 
   const onChangeInput = ({ target }: ChangeEvent<HTMLInputElement>) =>
     setFormState((formState) => ({

@@ -1,10 +1,9 @@
 import { ChangeEvent, FormEventHandler, useState } from "react";
 import AuthInput from "../components/common/AuthInput";
 import { RegisterRequest } from "../api/authApi";
-import { useCheckDup } from "../components/hooks/api/useCheckDup";
 import clsx from "clsx";
-import { useLogin } from "../components/hooks/api/useLogin";
-import { useRegister } from "../components/hooks/api/useRegister";
+import { useCheckDup } from "../hooks/api/useCheckDup";
+import { useRegister } from "../hooks/api/useRegister";
 
 const FIELDS = ["userId", "nickname", "password", "phone", "address"];
 const RegisterPage = () => {
