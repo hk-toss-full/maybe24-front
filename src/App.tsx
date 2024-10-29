@@ -18,7 +18,7 @@ const queryClient = new QueryClient();
 
 // apollo for graphQL
 const client = new ApolloClient({
-  uri: "/", // graphql server url
+  uri: "http://localhost:8080/product/graphql", // graphql server url
   cache: new InMemoryCache(),
 });
 

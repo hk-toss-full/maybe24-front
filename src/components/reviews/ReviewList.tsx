@@ -78,7 +78,7 @@ const ReviewList: React.FC<Review> = ({productId}) => {
         {reviews.map((review) => (
         <li key={review.reviewId} className="border-b-[1px] border-gray-300 mt-[10px] pb-[10px]">
           <div className="flex flex-row gap-5">
-            {review.author} <FormattingDate createdAt={review.createdAt} />
+            {review.author} {review.createdAt}
             <button onClick={() => deletePost(review.reviewId)} className="border-black border-2 w-[60px]">delete</button>
             <button onClick={() => openPost(review)}  className="border-black border-2 w-[60px]">update</button>
           </div>
