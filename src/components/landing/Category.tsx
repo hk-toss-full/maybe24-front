@@ -16,7 +16,7 @@ const Category = ({ title, themeColor, dataList }: CategoryProps) => {
         </span>
         <div className="w-20 h-1" style={{ backgroundColor: themeColor }} />
       </div>
-      <div className="flex gap-10">
+      <div className="flex gap-10 justify-center">
         {dataList?.map((data, idx) => (
           <NameCard key={idx} {...data} />
         ))}
