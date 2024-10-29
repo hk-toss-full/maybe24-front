@@ -1,5 +1,4 @@
 import { useQuery } from "@apollo/client";
-// import dataList from "../../data/whats_hot.json";
 import MoreInfoCard from "../common/MoreInfoCard";
 import { getAllProdcuts } from "../../api/query/getAllProducts";
 
