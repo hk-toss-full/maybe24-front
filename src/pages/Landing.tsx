@@ -1,13 +1,23 @@
+import { useQuery } from "@apollo/client";
 import Category from "../components/landing/Category";
 import FocusOn from "../components/landing/FocusOn";
 import MiddleBanner from "../components/landing/MiddleBanner";
 import Ranking from "../components/landing/Ranking";
 import Banner from "../components/landing/TopBanner";
 import WhatsHot from "../components/landing/WhatsHot";
-import musicalData from "../data/category_musical.json";
-import LandingLayout from "../layout/landing_layout";
+import LandingLayout from "../layout/landing";
+import { getProductsByCategory } from "../api/query/getProductsByCategory";
 
 const LandingPage = () => {
+  const { data: musicalData } = useQuery(getProductsByCategory, {
+    variables: { category: "MUSICAL" },
+  });
+  const { data: concertData } = useQuery(getProductsByCategory, {
+    variables: { category: "CONCERT" },
+  });
+  const { data: exhibitionData } = useQuery(getProductsByCategory, {
+    variables: { category: "EXHIBITION" },
+  });
   return (
     <LandingLayout>
       <div className="mb-10">
@@ -23,17 +33,17 @@ const LandingPage = () => {
         <Category
           title="MUSICAL & PLAY"
           themeColor="#E82F75"
-          dataList={musicalData}
+          dataList={musicalData?.getProductsByCategory.slice(0, 6)}
         />
         <Category
           title="CONCERT & CLASSIC"
           themeColor="#8340EA"
-          dataList={musicalData}
+          dataList={concertData?.getProductsByCategory.slice(0, 6)}
         />
         <Category
           title="EXHIBITION & KIDS"
           themeColor="#16CAA6"
-          dataList={musicalData}
+          dataList={exhibitionData?.getProductsByCategory.slice(0, 6)}
         />
         {/** REVIEW & INTERVIEW */}
         <></>

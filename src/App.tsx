@@ -10,13 +10,16 @@ import {
 import LandingPage from "./pages/Landing.tsx";
 import GlobalLayout from "./layout/global.tsx";
 import "../tailwind.css";
+import LoginPage from "./pages/Login.tsx";
+import AuthLayout from "./layout/auth.tsx";
+import RegisterPage from "./pages/Register.tsx";
 
 // tanstack query
 const queryClient = new QueryClient();
 
 // apollo for graphQL
 const client = new ApolloClient({
-  uri: "/", // graphql server url
+  uri: "http://localhost:8080/product/graphql", // graphql server url
   cache: new InMemoryCache(),
 });
 
@@ -26,11 +29,21 @@ const routes: RouteObject[] = [
   // 하위에 루트 추가
 ];
 
+const authRoutes: RouteObject[] = [
+  { path: "login", element: <LoginPage /> },
+  { path: "register", element: <RegisterPage /> },
+];
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <GlobalLayout />,
     children: routes,
+  },
+  {
+    path: "/auth",
+    element: <AuthLayout />,
+    children: authRoutes,
   },
 ]);
 

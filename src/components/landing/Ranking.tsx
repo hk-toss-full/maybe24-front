@@ -1,18 +1,22 @@
 import { useState } from "react";
-import dataList from "../../data/ranking.json";
 import clsx from "clsx";
 import RankingItem from "./RankingItem";
+import { useQuery } from "@apollo/client";
+import { getTop3ByCategoryOrderByViewCnt } from "../../api/query/getTop3ByCategoryOrderByViewCnt";
 
 const CATEGORIES = [
   { key: "musical", label: "뮤지컬" },
   { key: "concert", label: "콘서트" },
-  { key: "play", label: "연극" },
+  { key: "theater", label: "연극" },
   { key: "classic", label: "클래식" },
   { key: "exhibition", label: "전시" },
 ];
 
 const Ranking = () => {
   const [selected, setSelected] = useState<string>("musical");
+  const { loading, data } = useQuery(getTop3ByCategoryOrderByViewCnt, {
+    variables: { category: selected.toUpperCase() },
+  });
 
   return (
     <div className="section">
@@ -32,10 +36,9 @@ const Ranking = () => {
         ))}
       </ul>
       <div className="flex justify-center gap-10">
-        {dataList
-          .filter((data) => data.category === selected)
-          .map((data, idx) => (
-            <RankingItem key={idx} {...data} />
+        {!loading &&
+          data?.getTop3ByCategoryOrderByViewCnt?.map((data, idx) => (
+            <RankingItem key={idx} {...data} rank={idx + 1} />
           ))}
       </div>
     </div>
