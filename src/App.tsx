@@ -9,10 +9,13 @@ import {
 } from "react-router-dom";
 import LandingPage from "./pages/Landing.tsx";
 import GlobalLayout from "./layout/global.tsx";
+import DetailsPage from "./pages/details/index.tsx";
 import "../tailwind.css";
+import ReviewsPage from "./pages/reviews/index.tsx";
 import LoginPage from "./pages/Login.tsx";
 import AuthLayout from "./layout/auth.tsx";
 import RegisterPage from "./pages/Register.tsx";
+
 
 // tanstack query
 const queryClient = new QueryClient();
@@ -26,6 +29,8 @@ const client = new ApolloClient({
 // router
 const routes: RouteObject[] = [
   { path: "/", element: <LandingPage /> },
+  { path: "/details/:productId", element: <DetailsPage/>},
+  { path: "/reviews/:productId", element: <ReviewsPage/>},
   // 하위에 루트 추가
 ];
 
