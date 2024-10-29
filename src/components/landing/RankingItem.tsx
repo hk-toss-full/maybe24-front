@@ -1,8 +1,11 @@
+import { Link } from "react-router-dom";
+
 interface RoundDetail {
   date: string;
 }
 
 interface RankingItemProps {
+  productId: string;
   category: string;
   title: string;
   rank: number;
@@ -12,9 +15,13 @@ interface RankingItemProps {
 }
 
 const RankingItem = (props: RankingItemProps) => {
-  const { category, title, rank, place, productImgUrl, dateList } = props;
+  const { productId, category, title, rank, place, productImgUrl, dateList } =
+    props;
   return (
-    <div className="h-[428px] w-92 group cursor-pointer flex-1">
+    <Link
+      to={`/details/${productId}`}
+      className="h-[428px] w-92 group cursor-pointer flex-1"
+    >
       <div className="relative h-80 ">
         <div className="bg-black/50 absolute w-full h-80 top-0 z-10" />
         <div className="h-80 w-full overflow-hidden">
@@ -40,7 +47,7 @@ const RankingItem = (props: RankingItemProps) => {
           {place}
         </p>
       </div>
-    </div>
+    </Link>
   );
 };
 

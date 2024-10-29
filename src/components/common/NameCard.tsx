@@ -1,11 +1,17 @@
+import { Link } from "react-router-dom";
+
 export interface NameCardProps {
+  productId: string;
   title: string;
   productImgUrl: string;
 }
 
-const NameCard = ({ title, productImgUrl }: NameCardProps) => {
+const NameCard = ({ productId, title, productImgUrl }: NameCardProps) => {
   return (
-    <div className="group cursor-pointer w-[190px]">
+    <Link
+      to={`/details/${productId}`}
+      className="group cursor-pointer w-[190px]"
+    >
       <img
         src={productImgUrl}
         alt="productImgUrl"
@@ -14,7 +20,7 @@ const NameCard = ({ title, productImgUrl }: NameCardProps) => {
       <h2 className="group-hover:font-bold mt-4 text-center line-clamp-1 px-2">
         {title}
       </h2>
-    </div>
+    </Link>
   );
 };
 

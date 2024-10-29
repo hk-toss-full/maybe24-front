@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 interface DiscountDetail {
   discountType: string;
   discountRate: number;
@@ -8,6 +10,7 @@ interface RoundDetail {
 }
 
 interface Product {
+  productId: string;
   title: string;
   place: string;
   productImgUrl: string;
@@ -16,9 +19,9 @@ interface Product {
 }
 
 const MoreInfoCard = (props: Product) => {
-  const { title, place, productImgUrl, discounts, dateList } = props;
+  const { productId, title, place, productImgUrl, discounts, dateList } = props;
   return (
-    <div className="relative">
+    <Link to={`/details/${productId}`} className="relative">
       <div className="relative w-[250px] overflow-hidden mb-3">
         <div className="absolute peer left-0 hover:bg-black/60 z-10 top-0 w-[250px] h-full transition-all text-white group hover:cursor-pointer">
           <div className="p-5 w-full h-full opacity-0 group-hover:opacity-100 duration-200 flex flex-col text-center justify-center items-center">
@@ -40,7 +43,7 @@ const MoreInfoCard = (props: Product) => {
       <div className="absolute rounded-full bg-[#ec7d2c] h-14 w-14 -bottom-3 left-5 z-20 flex justify-center items-center text-white text-[18px] font-semibold">
         {discounts[0].discountRate}%
       </div>
-    </div>
+    </Link>
   );
 };
 
